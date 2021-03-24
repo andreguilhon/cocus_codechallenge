@@ -5,10 +5,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quotes: [],
+      quotes: [{
+        'line_number': -1,
+        'line_content': 'No quotes available',
+        'most_common_character': ''
+      }],
       loaded: false,
       placeholder: "Loading",
-      most_common_character: {}
+      most_common_character: {
+        'most_common_character': 'No quotes available',
+        'count': -1
+      }
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -28,12 +35,14 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        this.setState(() => {
-          return {
-            most_common_character: data,
-            loaded: true,
-          };
-        });
+        if (Object.keys(data).length) {
+          this.setState(() => {
+            return {
+              most_common_character: data,
+              loaded: true,
+            };
+          });
+        }
       });
   }
 
@@ -72,12 +81,14 @@ class App extends Component {
         return response.json();
       })
       .then(quotes => {
-        this.setState(() => {
-          return {
-            quotes,
-            loaded: true,
-          };
-        });
+        if (quotes.length) {
+          this.setState(() => {
+            return {
+              quotes,
+              loaded: true,
+            };
+          });
+        }
       });
   }
 

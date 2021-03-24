@@ -19,5 +19,8 @@ class QuoteList(generics.ListAPIView):
 
 class MostCommonCharacter(views.APIView):
     def get(self, request):
-        most_common = Quote.objects.values("most_common_character").annotate(count=Count('most_common_character')).order_by("-count")[0]
-        return Response({'most_common_character': most_common['most_common_character'], 'count': most_common['count']})
+        most_common_chars = Quote.objects.values("most_common_character").annotate(count=Count('most_common_character')).order_by("-count")
+        if most_common_chars:
+            most_common = most_common_chars[0]
+            return Response({'most_common_character': most_common['most_common_character'], 'count': most_common['count']})
+        return Response({})
