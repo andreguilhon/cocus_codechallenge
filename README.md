@@ -27,9 +27,6 @@
   </ol>
 </details>
 
-
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 This project was created to be the answer to Cocus Portugal Code Challenge, and make it easier to maintain if needed to change something.
@@ -43,13 +40,20 @@ This project was created to be the answer to Cocus Portugal Code Challenge, and 
 * [Docker Compose](https://docs.docker.com/compose/)
 * [Postgresql](https://www.postgresql.org/)
 
-
-
-<!-- GETTING STARTED -->
 ## Getting Started
 
+There are some parameters that can be changed. The connection to the database is made by using envoiroment variables:
+```
+DB_NAME
+DB_USER
+DB_PASSWORD
+DB_HOST
+DB_PORT
+```
+Also, by default blank spaces are not considered as a character, to change that, create an environment variable `INCLUDE_BLANKS` and set it's value to True.
+The file is loaded as soon as the application is lauched, and it gets cached, in order to perform better. To reload cache, just restart the server.
 There are two ways to get started:
-One is to use Docker and Docker-compose. It is the easier one, if you have those installed;
+One is to use Docker and Docker-compose. This is the easier one;
 The second one is to use it locally and build the whole environment.
 
 ### Prerequisites (Running in docker)
@@ -74,7 +78,6 @@ You can also populate your Database with some lines from the file, as well as th
 Finally, if you want to show the quotes in the database, 5 at a time, you may access http://localhost:8020/. It will show you 5 random quotes, including the most frequent character. Also, it will tell you which is the character that is the most frequent among the most frequent for each quote. 
 You'll also find a button, that let's you fetch another quote from the database, and put it right bellow the last one you had. You can do it as many times as you need. 
 
-<!-- CONTACT -->
 ## Contact
 
 André Guilhon - andre.guilhon@gmail.com / andre@guilhon.dev.br
