@@ -351,3 +351,5 @@ MigrationBackup/
 
 # Excludes VSCode config files
 .vscode/
+# Ignores PGdata
+.data/
