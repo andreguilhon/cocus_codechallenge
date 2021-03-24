@@ -53,6 +53,7 @@ DB_PORT
 Also, by default blank spaces are not considered as a character, to change that, create an environment variable `INCLUDE_BLANKS` and set it's value to True.
 A random secret_key will be generated automatically once yoy start the server. If you need, you can pass it as the environment variable `SECRET_KEY`.
 The file is loaded as soon as the application is lauched, and it gets cached, in order to perform better. To reload cache, just restart the server.
+If you run the project locally, you might need to set the environment variable `RUNNING_PORT` to the port you run your Django instance. This is needed to get the get_quote command working.
 There are two ways to get started:
 One is to use Docker and Docker-compose. This is the easier one;
 The second one is to use it locally and build the whole environment.
