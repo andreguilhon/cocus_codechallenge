@@ -135,4 +135,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 NUMBER_OF_LINES = file_len(f'{BASE_DIR}/reader/quotes.txt')
-INCLUDE_BLANKS = False
+INCLUDE_BLANKS = os.getenv('INCLUDE_BLANKS', False)
