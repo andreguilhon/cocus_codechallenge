@@ -37,7 +37,7 @@ class App extends Component {
       });
   }
 
-  handleClick(e){
+  handleClick(e) {
     this.fetchData();
   }
 
@@ -85,25 +85,29 @@ class App extends Component {
     return (
       <div>
         <div>
-          <div className="row">
-            <div className="column" style={{backgroundColor: "#aaa"}}>
+          <div className="row" style={{ margin: "20px" }}>
+            <div className="column main" >
               <h2>The most common character in the database is <b>{this.state.most_common_character.most_common_character}</b></h2>
               <p>It is the most frequent character in {this.state.most_common_character.count} quotes.</p>
             </div>
           </div>
-            {this.state.quotes.map(quote => {
-              return (
-                <div className="row" style={{padding: "5px"}} key={quote.line_number}>
-                  <div className="column" style={{backgroundColor: "#aaa"}}>
-                    <h2>{quote.line_content}</h2>
-                    <p>The most frequent character in this quote is {quote.most_common_character}</p>
-                  </div>
+          {this.state.quotes.map(quote => {
+            return (
+              <div className="row" style={{ margin: "20px" }} key={quote.line_number}>
+                <div className="column quote" >
+                  <h2>{quote.line_content}</h2>
+                  <p>The most frequent character in this quote is {quote.most_common_character}</p>
                 </div>
-              );
-            })}
-          <button onClick={this.handleClick}>Load another quote!</button>
+              </div>
+            );
+          })}
+          <div className="row">
+            <div className="column" style={{ textAlign: "center" }}>
+              <button onClick={this.handleClick} className="button">Hit me another one!</button>
+            </div>
+          </div>
         </div>
-        
+
       </div>
     );
   }
