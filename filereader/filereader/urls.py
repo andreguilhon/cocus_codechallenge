@@ -19,7 +19,10 @@ from linecache import clearcache
 
 # Clears file cache upon start of server.
 clearcache()
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('reader.urls')),
+    path('', include('frontend.urls')),
+    path('', include('quote.urls')),
 ]

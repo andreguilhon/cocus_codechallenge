@@ -14,6 +14,12 @@ from pathlib import Path
 import os
 
 
+def file_len(fname):
+    with open(fname) as f:
+        for i, l in enumerate(f):
+            pass
+    return i + 1
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -34,6 +40,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'reader.apps.ReaderConfig',
+    'quote.apps.QuoteConfig',
+    'frontend',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,7 +89,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
-        # 'PASSWORD': 'CocusGuilhon19)#',
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
@@ -126,3 +133,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+NUMBER_OF_LINES = file_len(f'{BASE_DIR}/reader/quotes.txt')
+INCLUDE_BLANKS = False
