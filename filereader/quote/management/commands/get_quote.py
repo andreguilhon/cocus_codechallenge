@@ -1,10 +1,9 @@
-from os import stat
+from os import stat,getenv
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from quote.models import Quote
 import requests
 import collections
-
 
 
 class Command(BaseCommand):
@@ -35,7 +34,8 @@ class Command(BaseCommand):
 
     @staticmethod
     def __get_quote():
-       return requests.get('http://localhost:8010/reader/').json()
+        running_port = getenv('RUNNING_PORT', 8020)
+        return requests.get(f'http://localhost:{running_port}/reader/').json()
 
     def __get_most_common_character(self, quote, include_blank):
         most_common = collections.Counter(quote).most_common(2)
